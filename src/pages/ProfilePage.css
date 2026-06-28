@@ -1,0 +1,40 @@
+.profile-page {
+  max-width: 600px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background: #1c1f2b;
+  border-radius: 12px;
+  color: #fff;
+  text-align: center;
+}
+
+.profile-title {
+  margin-bottom: 1.5rem;
+  color: #00e0ff;
+  font-size: 1.6rem;
+}
+
+.profile-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.profile-pic {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 3px solid #00e0ff;
+  margin-bottom: 1rem;
+}
+
+.profile-card h3 {
+  color: #00e0ff;
+}
+
+.profile-card p {
+  color: #ccc;
+  margin: 0.2rem 0;
+}
+

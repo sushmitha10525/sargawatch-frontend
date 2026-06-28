@@ -1,0 +1,301 @@
+/* Full page layout */
+.login-page {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-image: url("/eeearth.png");
+  background-size: cover;
+  background-position: center;
+  padding: 0 40px;
+  font-family: Arial, Helvetica, sans-serif;
+  overflow: hidden; /* prevent scroll */
+}
+
+/* Title section on the left */
+.title-section {
+  flex: 1;
+  max-width: 600px;
+  margin-right: 60px;
+}
+
+/* Title + Logo inline */
+.title-with-logo {
+  display: flex;
+  align-items: flex-start;   /* align at top */
+}
+
+.main-title {
+  font-size: 85px !important;
+  font-weight: 100;
+  text-transform: uppercase;
+  margin: 0;
+  line-height: 1.1;
+  text-align: left;
+
+  background: linear-gradient(90deg, #4449cbc3, #04c08a);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  color: unset;
+  text-shadow: none;
+}
+
+/* ✅ Push logo up so subtitle stays under title */
+.main-logo-inline {
+  width: 150px;
+  height: auto;
+  margin-left: -5px;   /* hug title closely */
+  margin-top: -28px;   /* lift logo ~1cm above baseline */
+  position: relative;
+  top: -10px;          /* extra lift so it doesn’t push subtitle */
+}
+
+/* Subtitle stays directly under title */
+.title-section p {
+  font-size: 25px;
+  margin-top: 12px;
+  font-weight: bold;
+  font-style: italic;
+  color: #fafefd;
+}
+.subtitle {
+  font-size: 25px;
+  margin-top: 8px;
+  font-style: italic;
+  color: rgb(253, 249, 249);
+}
+
+/* Login box on the right */
+.login-container {
+  flex-shrink: 0;
+  background: rgba(232, 226, 226, 0.15);
+  backdrop-filter: blur(12px);
+  padding: 30px;
+  width: 340px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(13, 0, 0, 0.5);
+  color: rgb(22, 3, 3);
+  transition: transform 0.3s;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;   /* ✅ center content vertically */
+}
+.login-container:hover {
+  transform: translateY(-4px);
+}
+
+/* ✅ Login box title + logo inline */
+.box-title-with-logo {
+  display: inline-flex;       /* inline flex for text + logo */
+  align-items: center;        /* align vertically middle */
+  justify-content: center;    /* center horizontally */
+  width: 100%;
+}
+
+.box-title {
+  text-transform: uppercase;
+  font-weight: 800;
+  margin: 0;
+  background: linear-gradient(90deg, #4449cbc3, #04c08a);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  display: inline-block;
+}
+
+.login-logo {
+  width: 60px;
+  height: auto;
+  margin-left: -2px;   /* ✅ remove gap after H */
+  vertical-align: middle;
+}
+
+.login-subtitle {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #0f0000;
+  font-weight: bold;
+}
+
+/* Form layout */
+.form-inline {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12px;
+}
+.form-inline label {
+  margin-bottom: 4px;
+  font-size: 13px;
+  color: rgb(11, 0, 0);
+}
+
+/* ✅ Unified input style (same shape for email/phone + password) */
+.login-container input[type="text"],
+.login-container input[type="email"],
+.login-container input[type="password"] {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;   /* same rounded corners */
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+/* Login button */
+button {
+  width: 100%;
+  padding: 10px;
+  background: #0b68c5;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  margin-top: 12px;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+}
+button:hover,
+button:active {
+  background: #0bd319;
+  color: #000;
+}
+
+/* Links */
+.extra-links {
+  margin-top: 8px;
+  text-align: center;
+  font-size: 13px;
+}
+.extra-links a {
+  color: #1f78d1;
+  text-decoration: none;
+}
+.extra-links a:hover {
+  text-decoration: underline; /* ✅ hover effect for forgot password */
+}
+
+/* Role selector as compact buttons */
+.role-selector {
+  margin: 15px 0;
+  text-align: center;
+}
+.role-options {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+.role-card {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  cursor: pointer;
+  background: #fff;
+  font-size: 13px;
+  transition: all 0.3s ease;
+}
+.role-card:hover {
+  background: #f0f8ff;
+  border-color: #0078d4;
+}
+.role-card.selected {
+  background: #e6f2ff;
+  border-color: #0078d4;
+  box-shadow: 0 0 6px rgba(0,120,212,0.5);
+}
+.role-icon {
+  font-size: 1rem;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 20px;
+}
+
+.social-btn {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  cursor: pointer;
+  background: transparent;
+  border: 1.5px solid #ccc;
+  transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+  padding: 0;
+}
+
+.social-btn img,
+.social-btn svg {
+  width: 36px;
+  height: 36px;
+}
+
+.social-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 5px 14px rgba(0,0,0,0.25);
+}
+
+/* Brand accent on hover */
+.google-btn:hover { border-color: #ea4335; }
+.linkedin-btn:hover { border-color: #0077b5; }
+.microsoft-btn:hover { border-color: #2f2f2f; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .login-page {
+    flex-direction: column;
+    padding: 20px;
+  }
+  .title-section {
+    margin-right: 0;
+    text-align: center;
+  }
+  .role-options {
+    flex-direction: column;
+    align-items: center;
+  }
+  .login-container {
+    width: 100%;
+    margin-top: 15px;
+  }
+}
+
+/* Password input with toggle inside */
+.password-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-wrapper input {
+  width: 100%;
+  padding: 12px;   /* ✅ match email/phone input padding */
+  border: 1px solid #ccc;
+  border-radius: 8px;   /* ✅ same shape */
+  font-size: 14px;
+}
+
+.toggle-icon {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+  font-size: 20px;
+  color: #555;
+  display: flex;
+  align-items: center;
+  transition: color 0.3s;
+}
+
+.toggle-icon:hover {
+  color: #0078d4;
+}
