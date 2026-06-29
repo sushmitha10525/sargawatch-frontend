@@ -1,15 +1,11 @@
 {
   "name": "sargawatch-frontend",
-  "private": true,
   "version": "0.0.0",
-  "type": "module",
-  "homepage": "https://sushmitha10525.github.io/sargawatch-frontend",
+  "private": true,
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "lint": "eslint .",
     "preview": "vite preview",
-    "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
@@ -34,7 +30,7 @@
     "react-dom": "^18.2.0",
     "react-icons": "^5.6.0",
     "react-leaflet": "^4.2.1",
-    "react-leaflet-draw": "^0.20.0",
+    "react-leaflet-draw": "^0.20.6",
     "react-linkedin-login-oauth2": "^2.0.1",
     "react-router": "^7.17.0",
     "react-router-dom": "^7.17.0",

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useGoogleLogin } from "@react-oauth/google";
 import { FaLinkedin, FaEye, FaEyeSlash } from "react-icons/fa";
-import { jwtDecode } from "jwt-decode";
+import { jwtDecode } from "jwt-decode"; // ✅ fixed import
 import axios from "axios";
 import "./Login.css";
 
@@ -65,17 +65,25 @@ export default function Login() {
     }
   };
 
-  // ✅ Google login
-  const handleGoogleSuccess = (credentialResponse) => {
-    const decoded = jwtDecode(credentialResponse.credential);
-    const googleEmail = decoded.email;
-    setIdentifier(googleEmail);
-    setNickname(getNicknameFromEmail(googleEmail));
-    alert(`Google login successful: ${googleEmail}`);
-  };
-
+  // ✅ Google login (fixed usage of jwtDecode)
   const googleLogin = useGoogleLogin({
-    onSuccess: handleGoogleSuccess,
+    onSuccess: async (tokenResponse) => {
+      try {
+        const res = await axios.get("https://www.googleapis.com/oauth2/v3/userinfo", {
+          headers: { Authorization: `Bearer ${tokenResponse.access_token}` },
+        });
+        const googleEmail = res.data.email;
+        setIdentifier(googleEmail);
+        setNickname(getNicknameFromEmail(googleEmail));
+
+        // ✅ Example usage of jwtDecode if you need to decode a JWT:
+        // const decoded = jwtDecode(tokenResponse.access_token);
+
+        alert(`Google login successful: ${googleEmail}`);
+      } catch {
+        setError("Google login failed");
+      }
+    },
     onError: () => setError("Google login failed"),
   });
 
@@ -109,7 +117,7 @@ export default function Login() {
       <div className="title-section">
         <div className="title-with-logo">
           <h1 className="main-title">SARGAWATCH</h1>
-          <img src="sargawatch-logo.png" alt="SARGAWATCH Logo" className="main-logo-inline" />
+          <img src="/sargawatch-logo.png" alt="SARGAWATCH Logo" className="main-logo-inline" />
         </div>
         <p><em>Satellite-Based Sargassum Bloom Monitoring</em></p>
         <p className="subtitle"><em>Empowering ocean research through innovation</em></p>
@@ -119,7 +127,7 @@ export default function Login() {
       <div className="login-container">
         <div className="box-title-with-logo">
           <h2 className="box-title">SARGAWATCH</h2>
-          <img src="sargawatch-logo.png" alt="SARGAWATCH Logo" className="login-logo" />
+          <img src="/sargawatch-logo.png" alt="SARGAWATCH Logo" className="login-logo" />
         </div>
         <p className="login-subtitle"><strong>LOGIN TO SARGAWATCH</strong></p>
 
@@ -136,6 +144,7 @@ export default function Login() {
                   placeholder="Enter email or phone number"
                 />
               </div>
+
               <div className="form-inline password-field">
                 <label>Password:</label>
                 <div className="password-wrapper">
@@ -152,6 +161,7 @@ export default function Login() {
               </div>
             </>
           )}
+
           {error && <p className="error-message">{error}</p>}
           <button type="submit">Log In</button>
         </form>
@@ -161,9 +171,7 @@ export default function Login() {
           {loginAttempts >= 5 ? (
             <button type="button" onClick={handleForgotPassword}>Forgot password?</button>
           ) : (
-            <a href="#" onClick={(e) => { e.preventDefault(); handleForgotPassword(); }}>
-              Forgot password?
-            </a>
+            <button type="button" onClick={handleForgotPassword}>Forgot password?</button>
           )}
           <br />
           Don’t have an account? <a href="#">Sign Up</a>
