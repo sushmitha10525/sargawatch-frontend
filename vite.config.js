@@ -3,6 +3,10 @@ import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [react()],
+  base: "/sargawatch-frontend/",   // 👈 must match your repo name
+  define: {
+    __DEFINES__: {},               // 👈 fixes the ReferenceError
+  },
   server: {
     proxy: {
       "/api": {
