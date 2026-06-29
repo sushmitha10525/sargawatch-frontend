@@ -115,7 +115,11 @@ export default function Login() {
       <div className="title-section">
         <div className="title-with-logo">
           <h1 className="main-title">SARGAWATCH</h1>
-          <img src="/sargawatch-logo.png" alt="SARGAWATCH Logo" className="main-logo-inline" />
+          <img
+            src={`${import.meta.env.BASE_URL}sargawatch-logo.png`}
+            alt="SARGAWATCH Logo"
+            className="main-logo-inline"
+          />
         </div>
         <p><em>Satellite-Based Sargassum Bloom Monitoring</em></p>
         <p className="subtitle"><em>Empowering ocean research through innovation</em></p>
@@ -125,7 +129,11 @@ export default function Login() {
       <div className="login-container">
         <div className="box-title-with-logo">
           <h2 className="box-title">SARGAWATCH</h2>
-          <img src="/sargawatch-logo.png" alt="SARGAWATCH Logo" className="login-logo" />
+          <img
+            src={`${import.meta.env.BASE_URL}sargawatch-logo.png`}
+            alt="SARGAWATCH Logo"
+            className="login-logo"
+          />
         </div>
 
         <p className="login-subtitle"><strong>LOGIN TO SARGAWATCH</strong></p>
@@ -194,13 +202,13 @@ export default function Login() {
           <p>──────── Or login with ────────</p>
           <div className="social-icons">
             <button className="social-btn google-btn" onClick={() => googleLogin()}>
-              <img src="/google.png" alt="Google" />
+              <img src={`${import.meta.env.BASE_URL}google.png`} alt="Google" />
             </button>
             <button className="social-btn linkedin-btn" onClick={handleLinkedInLogin}>
               <FaLinkedin />
             </button>
             <button className="social-btn microsoft-btn" onClick={handleMicrosoftLogin}>
-              <img src="/microsoft-icon.png" alt="Microsoft" />
+              <img src={`${import.meta.env.BASE_URL}microsoft-icon.png`} alt="Microsoft" />
             </button>
           </div>
         </div>
