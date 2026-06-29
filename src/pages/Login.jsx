@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useGoogleLogin } from "@react-oauth/google";
 import { FaLinkedin, FaEye, FaEyeSlash } from "react-icons/fa";
-import { jwtDecode } from "jwt-decode"; // ✅ fixed import
+import { jwtDecode } from "jwt-decode"; // fixed import
 import axios from "axios";
 import "./Login.css";
 
@@ -37,7 +37,7 @@ export default function Login() {
 
       // ✅ API call via axios (proxy handles /api)
       const res = await axios.post(`/api/auth/${roleRoute}`, {
-        email: identifier, // FIXED: backend expects 'email'
+        email: identifier, // backend expects 'email'
         password,
       });
 
@@ -60,12 +60,12 @@ export default function Login() {
       }
     } catch (err) {
       console.error("Login error:", err);
-      setError(err.response?.data?.message || "Login failed"); // FIXED: backend sends 'message'
+      setError(err.response?.data?.message || "Login failed");
       setLoginAttempts((prev) => prev + 1);
     }
   };
 
-  // ✅ Google login (fixed usage of jwtDecode)
+  // ✅ Google login
   const googleLogin = useGoogleLogin({
     onSuccess: async (tokenResponse) => {
       try {
@@ -75,10 +75,8 @@ export default function Login() {
         const googleEmail = res.data.email;
         setIdentifier(googleEmail);
         setNickname(getNicknameFromEmail(googleEmail));
-
-        // ✅ Example usage of jwtDecode if you need to decode a JWT:
+        // Example usage of jwtDecode if needed:
         // const decoded = jwtDecode(tokenResponse.access_token);
-
         alert(`Google login successful: ${googleEmail}`);
       } catch {
         setError("Google login failed");
@@ -129,6 +127,7 @@ export default function Login() {
           <h2 className="box-title">SARGAWATCH</h2>
           <img src="/sargawatch-logo.png" alt="SARGAWATCH Logo" className="login-logo" />
         </div>
+
         <p className="login-subtitle"><strong>LOGIN TO SARGAWATCH</strong></p>
 
         <form onSubmit={handleSubmit}>
@@ -168,11 +167,7 @@ export default function Login() {
 
         {/* Extra Links */}
         <div className="extra-links">
-          {loginAttempts >= 5 ? (
-            <button type="button" onClick={handleForgotPassword}>Forgot password?</button>
-          ) : (
-            <button type="button" onClick={handleForgotPassword}>Forgot password?</button>
-          )}
+          <button type="button" onClick={handleForgotPassword}>Forgot password?</button>
           <br />
           Don’t have an account? <a href="#">Sign Up</a>
         </div>
