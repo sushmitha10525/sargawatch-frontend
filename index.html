@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+
+
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>sarhablooms-frontend</title>
+    <script type="module" crossorigin src="/assets/index-DBM7xk-4.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-evilDpD_.css">
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <!-- ✅ Facebook SDK -->
+    <script async defer crossorigin="anonymous"
+      src="https://connect.facebook.net/en_US/sdk.js"></script>
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId: 'YOUR_FACEBOOK_APP_ID',   // replace with your actual App ID
+          cookie: true,
+          xfbml: true,
+          version: 'v17.0'                 // latest Graph API version
+        });
+        FB.AppEvents.logPageView();
+      };
+    </script>
+  </body>
+</html>
